@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="8.0.25" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Capa3_Dominio\Capa3_Dominio.csproj" />
+    <ProjectReference Include="..\Capa4_Persistencia\Capa4_Persistencia.csproj" />
+  </ItemGroup>
+
+</Project>

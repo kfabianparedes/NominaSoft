@@ -1,0 +1,448 @@
+<app-navbar></app-navbar>
+<ngb-alert  *ngIf="mostrarAlerta" [type]="tipoAlerta" (closed)="mostrarAlerta = false">{{mensaje}}</ngb-alert>
+<div *ngIf ="mostrar" style="margin-top:2;margin-bottom: 1rem;margin-left: 6rem;" class="container contenedor_general ">
+    <div class="card row tarjeta_empleado">
+        <div class="row">
+            <h4 class="card-title titulo_tarjeta text-center">Gestionar Contrato</h4><hr class="text-center">
+        </div>
+        <div class="card-body row">
+            <div class="col-sm-12 col-md-7 ">
+                <div class="row">
+                    <div class="row form-group">
+                        <label class="col-4 text-center" for="codigo">Código de Empleado:</label>
+                        <input class="col-8 form-control" disabled type="text" id="codigo" value="{{empleado.idEmpleado}}"/>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="row form-group">
+                        <label class="col-4 text-center" for="nombres">Nombres:</label>
+                        <input class="col-8 form-control" disabled type="text" id="nombres" value="{{empleado.nombres}}"/>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="row form-group">
+                        <label class="col-4 text-center" for="apellidoPaterno">Apellido Paterno:</label>
+                        <input class="col-8 form-control" disabled type="text" id="apellidoPaterno" value="{{empleado.apellidoPaterno}}"/>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="row form-group">
+                        <label class="col-4 text-center" for="apellidoMaterno">Apellido Materno:</label>
+                        <input class="col-8 form-control" disabled type="text" id="apellidoMaterno" value="{{empleado.apellidoMaterno}}"/>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="row form-group">
+                        <label class="col-4 text-center" for="fechaNacimiento">Fecha Nacimiento:</label>
+                        <input class="col-8 form-control" disabled type="text" id="fechaNacimiento" value="{{empleado.fechaNacimiento | date: 'dd/MM/yyyy'}}"/>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="row form-group">
+                        <label class="col-4 text-center" for="Celular">Teléfono Celular:</label>
+                        <input class="col-8 form-control" disabled type="text" id="Celular" value="{{empleado.telefono}}"/>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="row form-group">
+                        <label class="col-4 text-center" for="Sexo">Sexo:</label>
+                        <input class="col-8 form-control" disabled type="text" id="Sexo" placeholder="{{empleado.sexo}}"/>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="row form-group">
+                        <label class="col-4 text-center" for="dni">DNI:</label>
+                        <input class="col-8 form-control" disabled type="text" id="dni" placeholder="{{empleado.dni}}"/>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="row form-group">
+                        <label class="col-4 text-center" for="Direccion">Dirección:</label>
+                        <input class="col-8 form-control" disabled type="text" id="Direccion" placeholder="{{empleado.direccion}}"/>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="row form-group">
+                        <label class="col-4 text-center" for="estadoCivil">Estado Civil:</label>
+                        <input class="col-8 form-control" disabled type="text" id="estadoCivil" placeholder="{{empleado.estadoCivil}}"/>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="row form-group">
+                        <label class="col-4 text-center" for="gradoAcademico">Grado Académico:</label>
+                        <input class="col-8 form-control" disabled type="text" id="gradoAcademico" placeholder="{{empleado.gradoAcademico}}"/>
+                    </div> 
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-5 ">
+                <div class="row cotenedor_gestionar">
+                    <div class="col-md-8 col-lg-8 col-xl-8 card-img">
+                        <h4 class="text-center">Opciones de Contrato</h4>
+                        <img class="img-fluid img-thumbnail" src="../../assets/images/gestionar_contrato.png" alt="img-contrato"/>
+                    </div>
+                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 contenedor_botones">
+                        <div class="row ">
+                            <button class="botones btn btn-success btn-lg" (click)="crearNuevoContrato()">Crear</button>
+                        </div>
+                        <div class="row">
+                            <button class="botones btn btn-success btn-lg" (click)="obtenerContratoPorIdEmpleado()">Editar</button>
+                           
+                        </div>
+                        <div class="row">
+                            <button class="botones btn btn-success btn-lg" (click)="anularContrato()">Anular</button>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<app-footer></app-footer>
+<!--CREAR CONTRATO-->
+<ng-template #crear let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Crear Contrato</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <div class="container row modal-body" >
+        <form [formGroup]="crearContratoForm" class="col-12" >
+            
+            <div class="row mt-3">
+                <div class=" col-5">
+                    <label class="label">Fecha inicio: </label>
+                </div>
+                <div class="col-7">
+                    <input formControlName="crear_fechaInicial" class=" input form-control" placeholder="dd/mm/yyyy" type="date">
+                    <div *ngIf="crear_fechaInicial.invalid && (crear_fechaInicial.dirty || crear_fechaInicial.touched)"  style="color: rgb(197, 68, 68);">
+                        <div *ngIf="crear_fechaInicial.errors.required">
+                            * El campo es requerido.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-5">
+                    <label  class="label">Fecha fin: </label>
+                </div>
+                <div class="col-7">
+                    <input formControlName="crear_fechaFin" class=" input form-control" placeholder="dd/mm/yyyy" type="date">
+                    <div *ngIf="crear_fechaFin.invalid && (crear_fechaFin.dirty || crear_fechaFin.touched)"  style="color: rgb(197, 68, 68);">
+                        <div *ngIf="crear_fechaFin.errors.required">
+                            * El campo es requerido.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row mt-3">
+                <div class="col-5">
+                    <label  class="label">Cargo: </label>
+                </div>
+                <div class="col-7">
+                    <input formControlName="crear_cargo" class="input form-control" id="cargo" placeholder="Ingresar cargo" type="text">
+                    <div *ngIf="crear_cargo.invalid && (crear_cargo.dirty || crear_cargo.touched)"  style="color: rgb(197, 68, 68);">
+                        <div *ngIf="crear_cargo.errors.required">
+                            * El campo es requerido.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-5">
+                    <label  class="label">Selección de AFP</label>
+                </div>
+                <div class="col-7">
+                    <select formControlName="crear_seguro" class="input form-select " >
+                        <option hidden value="" disabledselected>Seleccionar un seguro</option>
+                        <option [value]="seguroModel.idSeguro" *ngFor="let seguroModel of listaSeguros">{{seguroModel.afp}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-6">
+                    <label  class="label">Asignación familiar</label>
+                </div>
+                <div class="col-6">
+                    <div class="row">
+                        <div class="input-group" class="col">
+                            <input (change)="crearAsignacionParaContrato(true)"  class="form-check-input" type="radio"  name="exampleRadios">
+                            <label class="form-check-label" for="exampleRadios1">Si</label>
+                        </div>
+                        <div class="input-group" class="col">
+                            <input (change)="crearAsignacionParaContrato(false)" class="form-check-input" type="radio"  name="exampleRadios" checked>
+                            <label class="form-check-label" for="exampleRadios1">No</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-5 text-left">
+                    <p  class="label">Total de horas contratadas por semana</p>
+                </div>
+                <div class="col-6" >
+                    <input formControlName="crear_totalHorasPorSemana"  class="input form-control " id=" HorasContratadas" placeholder="HorasContratadas">
+                    <div *ngIf="crear_totalHorasPorSemana.invalid && (crear_totalHorasPorSemana.dirty || crear_totalHorasPorSemana.touched)"  style="color: rgb(197, 68, 68);">
+                        <div *ngIf="crear_totalHorasPorSemana.errors.required">
+                            * El campo es requerido.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-5 text-left">
+                    <p  class="label">Valor por hora</p>
+                </div>
+                <div class="col-7">
+                    <input formControlName="crear_valorPorHora" class=" input form-control" id="valorPorHora" placeholder="valor por hora">
+                    <div *ngIf="crear_valorPorHora.invalid && (crear_valorPorHora.dirty || crear_valorPorHora.touched)"  style="color: rgb(197, 68, 68);">
+                        <div *ngIf="crear_valorPorHora.errors.required">
+                            * El campo es requerido.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr  class="linea">
+            <div class="row mt-3 moodal-footer">
+                <div class=" col-6">
+                    <button [disabled] = "crearContratoForm.invalid"  type="button" (click)="crearContrato()" class=" boton btn btn-primary btn-lg">Guardar</button>
+                </div>
+            </div>
+            <ngb-alert style="margin-top: 1rem;" *ngIf="mostrarAlerta_crear" [type]="tipoAlerta" (closed)="mostrarAlerta = false">{{mensaje}}</ngb-alert>
+        </form>
+    </div>
+    
+</ng-template>
+
+<!-- MODAL EDITAR CONTRATO-->
+
+<ng-template #editar let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Editar Contrato</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+    <div  class="container row modal-body" >
+        <form [formGroup]="editarContratoForm" class="form-group col-12"  *ngIf="mostrar_editar_modal">
+            <div class="row mt-3">
+                <div class=" col-5">
+                    <label class="label" for="fechaInicio">Fecha inicio: </label>
+                </div>
+                <div class="col-7">
+                    <input formControlName="fechaInicial" class=" input form-control" id="fechaInicio" placeholder="dd/mm/yyyy" type="date" value="{{contrato_.fechaInicial | date: 'dd/MM/yyyy'}}"  >
+                    <div *ngIf="fechaInicial.invalid && (fechaInicial.dirty || fechaInicial.touched)"  style="color: rgb(197, 68, 68);">
+                        <div *ngIf="fechaInicial.errors.required">
+                            * El campo es requerido.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-5">
+                    <label for="fecha_fin" class="label">Fecha fin: </label>
+                </div>
+                <div class="col-7">
+                    <input formControlName="fechaFin" class=" input form-control" id="fecha_fin" placeholder="dd/mm/yyyy" type="date" value="{{contrato_.fechaFinal | date: 'dd/MM/yyyy'}}">
+                    <div *ngIf="fechaFin.invalid && (fechaFin.dirty || fechaFin.touched)"  style="color: rgb(197, 68, 68);">
+                        <div *ngIf="fechaFin.errors.required">
+                            * El campo es requerido.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row mt-3">
+                <div class="col-5">
+                    <label  class="label">Cargo: </label>
+                </div>
+                <div class="col-7">
+                    <input formControlName="cargo" class="input form-control" id="cargo" placeholder="Cargo" type="text" value="{{contrato_.cargo}}">
+                    <div *ngIf="cargo.invalid && (cargo.dirty || cargo.touched)"  style="color: rgb(197, 68, 68);">
+                        <div *ngIf="cargo.errors.required">
+                            * El campo es requerido.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-5">
+                    <label  class="label">Selección de AFP</label>
+                </div>
+                <div class="col-7">
+                    <select formControlName="seguro" class="input form-select " >
+                        <option hidden value="" disabledselected>{{afp}}</option>
+                        <option [value]="seguroModel.idSeguro" *ngFor="let seguroModel of listaSeguros">{{seguroModel.afp}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-6">
+                    <label  class="label">Asignación familiar</label>
+                </div>
+                
+                <div class="col-6">
+                    <div class="row">
+                        <div class="input-group" class="col">
+                            <input (change)="obtenerAsignacionFamiliar(true)"  class="form-check-input" type="radio" [checked]="tiene_asignacion">
+                            <label class="form-check-label" for="exampleRadios1">Si</label>
+                        </div>
+                        <div class="input-group" class="col">
+                            <input (change)="obtenerAsignacionFamiliar(false)"  class="form-check-input" type="radio" [checked]="no_tiene_asignacion">
+                            <label class="form-check-label" for="exampleRadios1">No</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-5 text-left">
+                    <p  class="label">Total de horas contratadas por semana</p>
+                </div>
+                <div class="col-6" >
+                    <input formControlName="totalHorasPorSemana" class="input form-control " id=" HorasContratadas" value="{{contrato_.totalHorasPorSemana}}" placeholder="Horas contratadas"> 
+                    <div *ngIf="totalHorasPorSemana.invalid && (totalHorasPorSemana.dirty || totalHorasPorSemana.touched)"  style="color: rgb(197, 68, 68);">
+                        <div *ngIf="totalHorasPorSemana.errors.pattern">
+                            * Solo se acepta numeros.
+                        </div>
+                    </div>
+                </div>  
+            </div>
+            <div class="row mt-3">
+                <div class="col-5 text-left">
+                    <p  class="label" for="valorPorHora">Valor por hora</p>
+                </div>
+                <div class="col-7">
+                    <input formControlName="valorPorHora" class=" input form-control" id="valorPorHora" placeholder="Valor por hora" value="{{contrato_.valorPorHora}}">
+                    <div *ngIf="valorPorHora.invalid && (valorPorHora.dirty || valorPorHora.touched)"  style="color: rgb(197, 68, 68);">
+                        <div *ngIf="valorPorHora.errors.pattern">
+                            * Solo se acepta numeros.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr  class="linea">
+            <div class="row moodal-footer">
+                <div class=" col-6">
+                    <button type="button" (click)="editarContrato()" [disabled]="editarContratoForm.invalid" class=" boton btn btn-primary btn-lg">Guardar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <ngb-alert *ngIf="mostrarAlerta_editar" [type]="tipoAlerta" (closed)="mostrarAlerta_editar = false">{{mensaje}}</ngb-alert>
+</ng-template>
+
+<!--MODAL ANULAR CONTRATO-->
+<ng-template #anular let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Anular Contrato</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <div *ngIf="mostrar_anular_modal"  class="container row modal-body" >
+            <div class="row mt-3">
+                <div class=" col-5">
+                    <label class="label" for="fechaInicio">Fecha inicio: </label>
+                </div>
+                <div class="col-7">
+                    <input disabled class=" input form-control" id="fechaInicio" placeholder="dd/mm/yyyy" type="text" value="{{contrato_anular.fechaInicial | date: 'dd/MM/yyyy'}}"  >
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-5">
+                    <label for="fecha_fin" class="label">Fecha fin: </label>
+                </div>
+                <div class="col-7">
+                    <input disabled class=" input form-control" id="fecha_fin" placeholder="dd/mm/yyyy" type="text" value="{{contrato_anular.fechaFinal | date: 'dd/MM/yyyy'}}">
+                    
+                </div>
+            </div>
+            <div class="form-group row mt-3">
+                <div class="col-5">
+                    <label  class="label">Cargo: </label>
+                </div>
+                <div class="col-7">
+                    <input disabled class="input form-control"  placeholder="Cargo" type="text" value="{{contrato_anular.cargo}}">
+                    
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-5">
+                    <label  class="label">AFP:</label>
+                </div>
+                <div class="col-7">
+                    <input disabled class="input form-control"  placeholder="Cargo" type="text" value="{{afp}}">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-6">
+                    <label  class="label">Asignación familiar</label>
+                </div>
+                <div class="col-6">
+                    <div class="row">
+                        <div class="input-group" class="col">
+                            <input disabled class="form-check-input" type="radio" [checked]="tiene_asignacion">
+                            <label class="form-check-label" for="exampleRadios1">Si</label>
+                        </div>
+                        <div class="input-group" class="col">
+                            <input disabled class="form-check-input" type="radio" [checked]="no_tiene_asignacion">
+                            <label class="form-check-label" for="exampleRadios1">No</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-5 text-left">
+                    <p  class="label">Total de horas contratadas por semana</p>
+                </div>
+                <div class="col-6" >
+                    <input disabled class="input form-control " id=" HorasContratadas" value="{{contrato_anular.totalHorasPorSemana}}" placeholder="Horas contratadas">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-5 text-left">
+                    <p  class="label" for="valorPorHora">Valor por hora</p>
+                </div>
+                <div class="col-7">
+                    <input disabled class=" input form-control" id="valorPorHora" placeholder="Valor por hora" value="{{contrato_anular.valorPorHora}}">
+                </div>
+            </div>
+            <hr  class="linea">
+            <div class="row mt-3 moodal-footer">
+                <div class=" col-6">
+                    <button type="button" (click)="confimarAnulacionAbrir()" class=" boton btn btn-primary btn-lg">Anular</button>
+                </div>
+            </div>
+            <div class="mt-3"></div>
+    </div>
+    <ngb-alert style="margin-top: 1rem;" *ngIf="mostrarAlerta_anular" [type]="tipoAlerta" (closed)="mostrarAlerta_anular = false">{{mensaje}}</ngb-alert>
+</ng-template>
+
+<ng-template #confimarAnulacion let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title ">Confirmar anulación </h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" >
+        <div class="row">
+            <p style="text-align: center;">
+                Para confirmar la anulación del pago haga click en aceptar</p>
+        </div>
+        <!--ngb-alert style="margin-top: 1rem;" *ngIf="mostrarAlerta" [type]="tipoAlerta" (closed)="mostrarAlerta = false">{{mensaje}}</ngb-alert-->
+    </div>
+
+    <div class="modal-footer">
+        <div class="row justify-content-between">
+            <div class="col">
+                <button (click)="modal.dismiss('Cross click')"  class="botonesAnular btn btn-primary ">Cancelar</button>
+            </div>
+            <div class="col">
+                <button (click)="anularContratoAccion()" class="botonesAnular btn btn-primary ">Aceptar</button>
+            </div>
+        </div>
+    </div>
+    <ngb-alert  *ngIf="mostrarAlerta_anular" [type]="tipoAlerta" (closed)="mostrarAlerta_anular = false">{{mensaje}}</ngb-alert>
+</ng-template>
+

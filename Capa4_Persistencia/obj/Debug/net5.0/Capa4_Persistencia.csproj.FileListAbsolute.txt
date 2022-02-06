@@ -1,0 +1,15 @@
+C:\Users\Kfabi\Documents\GitHub\NominaSoft\Capa4_Persistencia\bin\Debug\net5.0\Capa4_Persistencia.deps.json
+C:\Users\Kfabi\Documents\GitHub\NominaSoft\Capa4_Persistencia\bin\Debug\net5.0\Capa4_Persistencia.dll
+C:\Users\Kfabi\Documents\GitHub\NominaSoft\Capa4_Persistencia\bin\Debug\net5.0\ref\Capa4_Persistencia.dll
+C:\Users\Kfabi\Documents\GitHub\NominaSoft\Capa4_Persistencia\bin\Debug\net5.0\Capa4_Persistencia.pdb
+C:\Users\Kfabi\Documents\GitHub\NominaSoft\Capa4_Persistencia\bin\Debug\net5.0\Capa3_Dominio.dll
+C:\Users\Kfabi\Documents\GitHub\NominaSoft\Capa4_Persistencia\bin\Debug\net5.0\Capa3_Dominio.pdb
+C:\Users\Kfabi\Documents\GitHub\NominaSoft\Capa4_Persistencia\obj\Debug\net5.0\Capa4_Persistencia.csprojAssemblyReference.cache
+C:\Users\Kfabi\Documents\GitHub\NominaSoft\Capa4_Persistencia\obj\Debug\net5.0\Capa4_Persistencia.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kfabi\Documents\GitHub\NominaSoft\Capa4_Persistencia\obj\Debug\net5.0\Capa4_Persistencia.AssemblyInfoInputs.cache
+C:\Users\Kfabi\Documents\GitHub\NominaSoft\Capa4_Persistencia\obj\Debug\net5.0\Capa4_Persistencia.AssemblyInfo.cs
+C:\Users\Kfabi\Documents\GitHub\NominaSoft\Capa4_Persistencia\obj\Debug\net5.0\Capa4_Persistencia.csproj.CoreCompileInputs.cache
+C:\Users\Kfabi\Documents\GitHub\NominaSoft\Capa4_Persistencia\obj\Debug\net5.0\Capa4_Persistencia.csproj.CopyComplete
+C:\Users\Kfabi\Documents\GitHub\NominaSoft\Capa4_Persistencia\obj\Debug\net5.0\Capa4_Persistencia.dll
+C:\Users\Kfabi\Documents\GitHub\NominaSoft\Capa4_Persistencia\obj\Debug\net5.0\ref\Capa4_Persistencia.dll
+C:\Users\Kfabi\Documents\GitHub\NominaSoft\Capa4_Persistencia\obj\Debug\net5.0\Capa4_Persistencia.pdb

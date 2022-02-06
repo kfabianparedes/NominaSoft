@@ -1,0 +1,94 @@
+<app-navbar></app-navbar>
+
+<div class="container row offset-1" style="margin-left: 10rem;" >
+    <div class="row titulo_ text-center">
+        <h1>NominaSoft</h1><hr>
+    </div>
+    <div class="card offset-md-3 col-md-7" style="margin-top:0.1rem;margin-bottom: 1.2rem;">
+        <div class="row text-center contrato"> <!--Primer boton-->
+            <div class="col-sm-12 col-lg-6 card-img">
+                <img class="img-fluid img-thumbnail" src="../../assets/images/contrato.png" alt="img-contrato"/>
+            </div>
+            <div class="col-lg-6">
+                <button type="button" (click)="open(gestionar_contrato)" class="boton btn btn-primary">Gestionar Contrato</button>
+            </div>
+        </div><hr class="hr_grande">
+        <div class="row text-center pago"> <!--Primer boton-->
+            <div class="col-sm-12 col-lg-6 card-img">
+                <img class="img-fluid img-thumbnail" src="../../assets/images/pago.png" alt="img-pago"/>
+            </div>
+            <div class="col-lg-6">
+                <button type="button" (click)="open(procesar_pago);pagoActivo();" class="boton btn btn-primary">Procesar Pagos</button>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
+
+
+<!--MODAL GESTIONAR CONTRATO-->
+<ng-template #gestionar_contrato let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title ">Gestionar Contrato</h4> 
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click');resetformulario();">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup] = "usuarioForm">
+            <div class="row form-group justify-content-center">
+                <label class="col-2 mt-1 " for="dni">DNI:</label>
+                <input formControlName="dni" class=" col-8 form-control" type="text" id="dni" placeholder="DNI de Empleado"/>
+                <div *ngIf="dni.invalid && (dni.dirty || dni.touched)"  style="color: rgb(197, 68, 68);">
+                    <div class="msj ml-5" *ngIf="dni.errors.required">
+                        * El campo es requerido.
+                    </div>
+                    <div class="msj ml-5" *ngIf="dni.errors.minlength">
+                        * El mínimo de caracteres es 8.
+                    </div>
+                    <div class="msj ml-5" *ngIf="dni.errors.maxlength">
+                        * El máximo de caracteres es 8.
+                    </div>
+                    <div class="msj ml-5" *ngIf="dni.errors.pattern">
+                        * Formato incorrecto.
+                    </div>
+                </div>
+            </div>
+        </form> 
+        <div class="modal-footer justify-content-center">
+            <button [disabled] = "usuarioForm.invalid" (click)="obtenerEmpleadoPorDNI()" type="button" class="btn_buscar btn btn-primary">Buscar</button>
+        </div>
+        <ngb-alert style="margin-top: 1rem;" *ngIf="mostrarAlerta" [type]="tipoAlerta" (closed)="mostrarAlerta = false">{{mensaje}}</ngb-alert>
+    </div>
+</ng-template>
+
+<!--MODAL PROCESAR PAGO-->
+<ng-template #procesar_pago let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title ">Procesar Pagos </h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" >
+        <form  *ngIf="mostrar" class="row">
+            <div class="row form-group justify-content-center">
+                <label class="col-4 mt-1 " for="dni">Código:</label>
+                <input disabled class=" col-8 form-control" type="text" id="dni" value="{{periodo.idPeriodo}}" placeholder="Código de Empleado"/>
+            </div>
+            <div class="row form-group justify-content-center">
+                <label class="col-4 mt-1 " for="fecha_inicio">Fecha Inicio:</label>
+                <input disabled class=" col-8 form-control" type="text" id="fecha_inicio" value="{{periodo.fechaInicio | date: 'dd/MM/yyyy'}}" placeholder="Fecha de Inicio"/>
+            </div>
+            <div class="row form-group justify-content-center">
+                <label class="col-4 mt-1 " for="fecha_fin">Fecha Fin:</label>
+                <input disabled class=" col-8 form-control" type="text" id="fecha_fin" value="{{periodo.fechaFin | date: 'dd/MM/yyyy'}}" placeholder="Fecha de Fin"/>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" (click)="procesarPago();" class="btn_buscar btn btn-primary">Procesar</button>
+            </div>
+        </form> 
+        <ngb-alert style="margin-top: 1rem;" *ngIf="mostrarAlerta" [type]="tipoAlerta" (closed)="mostrarAlerta = false">{{mensaje}}</ngb-alert>
+    </div>
+    
+</ng-template>

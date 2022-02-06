@@ -1,0 +1,45 @@
+<app-navbar></app-navbar>
+<div class="container-fluid contenedor" style="height: 150%;">
+    <br><br>
+    <div class="row justify-content-center">
+      <div class="col">
+        <h1 style="text-align: center;">
+          Pagos Realizados
+        </h1>
+        <hr>
+        <br><br>
+      </div>
+    </div>
+    <div *ngIf="calculo.length === listPagosRealizados.length && carga && calculo !== null" class="row contenedor-tabla">
+         <table  class="table table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl">
+            <thead>
+              <tr>
+                <th scope="col">código</th>
+                <th scope="col">nombre</th>
+                <th scope="col">dni</th>
+                <th scope="col">total de horas</th>
+                <th scope="col">valor horas</th>
+                <th scope="col">sueldo básico</th>
+                <th scope="col">total de ingresos</th>
+                <th scope="col">total de descuento</th>
+                <th scope="col">Sueldo neto</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr  *ngFor="let cal of calculo;let indice = index "  >
+                <th scope="row" >{{cal.idPago}}</th>
+                <td>{{cal.nombres}} {{cal.apellidoPaterno}} {{cal.apellidoMaterno}}</td>
+                <td>{{cal.dni}}</td>
+                <td>{{cal.totalHoras}}</td>
+                <td>{{cal.valorPorHora}}</td>
+                <td>{{cal.sueldoBasico}}</td>
+                <td>{{cal.totalIngresos}}</td>
+                <td>{{cal.totalDesc}}</td>
+                <td>{{cal.sueldoNeto}}</td>
+                
+              </tr>
+          </table> 
+    </div>
+    <br><br>
+</div>
+<app-footer></app-footer>

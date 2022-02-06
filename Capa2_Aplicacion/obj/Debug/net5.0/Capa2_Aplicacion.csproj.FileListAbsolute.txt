@@ -1,0 +1,17 @@
+C:\Users\Kfabi\Documents\GitHub\NominaSoft\Capa2_Aplicacion\bin\Debug\net5.0\Capa2_Aplicacion.deps.json
+C:\Users\Kfabi\Documents\GitHub\NominaSoft\Capa2_Aplicacion\bin\Debug\net5.0\Capa2_Aplicacion.dll
+C:\Users\Kfabi\Documents\GitHub\NominaSoft\Capa2_Aplicacion\bin\Debug\net5.0\ref\Capa2_Aplicacion.dll
+C:\Users\Kfabi\Documents\GitHub\NominaSoft\Capa2_Aplicacion\bin\Debug\net5.0\Capa2_Aplicacion.pdb
+C:\Users\Kfabi\Documents\GitHub\NominaSoft\Capa2_Aplicacion\bin\Debug\net5.0\Capa3_Dominio.dll
+C:\Users\Kfabi\Documents\GitHub\NominaSoft\Capa2_Aplicacion\bin\Debug\net5.0\Capa4_Persistencia.dll
+C:\Users\Kfabi\Documents\GitHub\NominaSoft\Capa2_Aplicacion\bin\Debug\net5.0\Capa3_Dominio.pdb
+C:\Users\Kfabi\Documents\GitHub\NominaSoft\Capa2_Aplicacion\bin\Debug\net5.0\Capa4_Persistencia.pdb
+C:\Users\Kfabi\Documents\GitHub\NominaSoft\Capa2_Aplicacion\obj\Debug\net5.0\Capa2_Aplicacion.csprojAssemblyReference.cache
+C:\Users\Kfabi\Documents\GitHub\NominaSoft\Capa2_Aplicacion\obj\Debug\net5.0\Capa2_Aplicacion.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kfabi\Documents\GitHub\NominaSoft\Capa2_Aplicacion\obj\Debug\net5.0\Capa2_Aplicacion.AssemblyInfoInputs.cache
+C:\Users\Kfabi\Documents\GitHub\NominaSoft\Capa2_Aplicacion\obj\Debug\net5.0\Capa2_Aplicacion.AssemblyInfo.cs
+C:\Users\Kfabi\Documents\GitHub\NominaSoft\Capa2_Aplicacion\obj\Debug\net5.0\Capa2_Aplicacion.csproj.CoreCompileInputs.cache
+C:\Users\Kfabi\Documents\GitHub\NominaSoft\Capa2_Aplicacion\obj\Debug\net5.0\Capa2_Aplicacion.csproj.CopyComplete
+C:\Users\Kfabi\Documents\GitHub\NominaSoft\Capa2_Aplicacion\obj\Debug\net5.0\Capa2_Aplicacion.dll
+C:\Users\Kfabi\Documents\GitHub\NominaSoft\Capa2_Aplicacion\obj\Debug\net5.0\ref\Capa2_Aplicacion.dll
+C:\Users\Kfabi\Documents\GitHub\NominaSoft\Capa2_Aplicacion\obj\Debug\net5.0\Capa2_Aplicacion.pdb

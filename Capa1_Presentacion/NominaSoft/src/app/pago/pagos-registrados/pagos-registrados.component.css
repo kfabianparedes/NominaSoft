@@ -1,0 +1,78 @@
+.contenedor-principal{
+}
+.contenedor-pagos{
+    align-items: center;
+}
+.card-pagos{
+
+    border:1px solid black;
+    border-radius: 15px;
+    margin-left: 8vh;
+    margin-right: 8vh;
+    margin-bottom: 2rem;
+    width:  430px;
+}
+@media screen and (min-width:1025px) and (max-width:1200px) {
+    .card-pagos{
+
+        margin-left: 4vh;
+        margin-right: 4vh;
+    }
+}
+@media screen and (min-width:993px) and (max-width:1024px) {
+    .card-pagos{
+
+        margin-left: 4vh;
+        margin-right: 0vh;
+    }
+    .contenedor-principal{
+        margin-bottom: 14vh;
+    }
+}
+@media screen and (min-width:769px) and (max-width:992px) {
+}
+@media screen and (min-width:541px) and (max-width:768px) {
+    .card-pagos{
+
+        margin-left: 2.5vh;
+        margin-right: 4.8vh;
+    }
+}
+@media screen and (min-width:501px) and (max-width:540px) {
+    .card-pagos{
+
+        margin-left: 3vh;
+        margin-right: 4.3h;
+    }
+}
+@media screen and (min-width:415px)  and (max-width: 500px) {
+    
+}
+@media screen and (min-width:361px)  and (max-width: 414px) {
+    .card-pagos{
+
+        margin-left: 2.5vh;
+        margin-right: 0vh;
+    }
+}
+@media screen and (min-width:321px)  and (max-width: 360px) {
+    .card-pagos{
+
+        margin-left: 2.5vh;
+        margin-right: 1vh;
+    }
+}
+@media screen and (min-width:281px)  and (max-width: 320px) {
+    .card-pagos{
+
+        margin-left: 2.5vh;
+        margin-right: 0vh;
+    }
+}
+@media screen and (max-width: 280px) {
+    .card-pagos{
+
+        margin-left: 1.8vh;
+        margin-right: 0vh;
+    }
+}

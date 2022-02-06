@@ -1,0 +1,109 @@
+<app-navbar *ngIf = "carga"></app-navbar>
+<div *ngIf = "carga" class="container-fluid"><br><br>
+    <div class="row contenedor-principal" >
+        <div class="col-12">
+            <div  class="row justify-content-center" style="text-align: center; align-items: center;">
+                <div class="col"><br>
+                    <h1 >Contratos a Pagar</h1>
+                    <hr style="align-items: center;">
+                </div>
+            <br>
+            </div>
+            <br>
+            <div class="row justify-content-center">
+                
+                <div  *ngIf="contratosListados.length != 0" style="align-items: center; text-align: center;" class="col-8 col-xl-6">
+                    <button (click)="abrirModalConfirmacionPago()" style="align-items: center; text-align: center;" type="button" class="btn btn-primary" >Registrar pagos</button>
+                </div>
+            </div>
+            <br><br>
+            <div *ngIf="contratosListados.length != 0; else noHayContratos" class="row justify-content-start contenedor-pagos">
+                
+                <div *ngFor="let cont of contratosListados"  class="card card-pagos col-11 col-lg-5 col-xl-3">
+                    <br>
+                    <div class="row">
+                        <div class="col-6"><strong>Nombre:</strong></div>
+                        <div class="col-6">{{cont.empleado.nombres}} {{cont.empleado.apellidoPaterno}} {{cont.empleado.apellidoMaterno}}</div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-6"><strong>DNI:</strong></div>
+                        <div class="col-6">{{cont.empleado.dni}}</div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-6"><strong>Cargo:</strong></div>
+                        <div class="col-6">{{cont.cargo}}</div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-6"><strong>Fecha inicial:</strong></div>
+                        <div class="col-6">{{cont.fechaInicial | date: 'dd/MM/yy'}}</div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-6"><strong>Fecha final:</strong></div>
+                        <div class="col-6">{{cont.fechaFinal | date: 'dd/MM/yy'}}</div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-6"><strong>Asignación familiar:</strong></div>
+                        <div class="col-6">
+                           {{ cont?.tieneAsignacionFamiliar == true? 'Tiene':cont?.tieneAsignacionFamiliar &&
+                            cont?.tieneAsignacionFamiliar == false? 'No tiene':cont?.tieneAsignacionFamiliar}}
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-6"><strong>total Horas:</strong></div>
+                        <div class="col-6">{{cont.totalHorasPorSemana}} h</div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-6"><strong>valor hora:</strong></div>
+                        <div class="col-6">S/ {{cont.valorPorHora}}</div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-6"><strong>AFP:</strong></div>
+                        <div class="col-6">{{cont.seguro.afp}}</div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-6"><strong>Descuento AFP:</strong></div>
+                        <div class="col-6">{{cont.seguro.porcentajeDescuento}} %</div>
+                    </div><br>
+                </div>
+            </div>
+            <ng-template #noHayContratos>
+                <div class="row">
+                    <h2 style ="text-align: center;align-items: center;">     
+                        No hay Contratos A pagar
+                    </h2>
+                </div>
+            </ng-template>
+            
+            <br><br>
+        </div>
+    </div>
+</div>
+<br><br>
+<app-footer *ngIf = "carga;" style="position: fixed;bottom: 0; width:100%"></app-footer>
+<ng-template #confirmaciónPago let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title ">Confirmar Pago </h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" >
+        <div class="row">
+            <p style="text-align: center;">
+                Para confirmar el pago de los contratos haga click en aceptar</p>
+        </div>
+        <!--ngb-alert style="margin-top: 1rem;" *ngIf="mostrarAlerta" [type]="tipoAlerta" (closed)="mostrarAlerta = false">{{mensaje}}</ngb-alert-->
+    </div>
+
+    <div class="modal-footer">
+        <div class="row">
+            <div class="col">
+                <button (click)="modal.dismiss('Cross click')"  class="btn btn-danger">Cancelar</button>
+            </div>
+            <div class="col">
+                <button (click)="realizarPago()" class="btn btn-primary">Aceptar</button>
+            </div>
+        </div>
+    </div>
+    
+</ng-template>
